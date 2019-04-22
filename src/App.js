@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
+// import "./components/map.css";
+import Map from "./components/map";
 
 import axios from "axios";
 // const API = `https://www.easyfoodstamps.com/stores?latitude=${latitude}&longitude=${longitude}`;
 
 class App extends Component {
   state = {
-    latitude: "",
-    longitude: "",
+    latitude: 40.70851,
+    longitude: -73.90896,
+    zoom: 1,
     searchResults: []
   };
 
@@ -42,11 +45,9 @@ class App extends Component {
 
   render() {
     console.log("App render");
-
     return (
       <div className="App">
-        <div id="mapid" />
-        <div className="Search">
+        <div id="search-container">
           <form onSubmit={this.handleSubmit}>
             <input
               type="text"
@@ -64,6 +65,9 @@ class App extends Component {
             />
             <input type="submit" value="submit" className="btn btn-secondary" />
           </form>
+        </div>
+        <div id="map-container">
+          <Map />
         </div>
       </div>
     );

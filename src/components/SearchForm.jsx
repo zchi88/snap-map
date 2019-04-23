@@ -28,9 +28,13 @@ class locationSearch extends Component {
     event.preventDefault();
     console.log("Performing search with:");
     console.log(this.state.address);
+    this.props.onSearch(this.state.address);
   };
 
   render() {
+    console.log("Search form rendering");
+    console.log("Search form props: ", this.props);
+
     return (
       <form className="input-group" onSubmit={this.handleSubmit}>
         <input

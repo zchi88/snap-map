@@ -30,6 +30,9 @@ class MapContainer extends Component {
   }
 
   render() {
+    console.log("Map container rendering");
+    console.log("Map container props: ", this.props);
+
     const position = [this.state.lat, this.state.lng];
     return (
       <Map id="map" center={position} zoom={this.state.zoom}>

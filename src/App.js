@@ -8,26 +8,24 @@ const API = "https://www.easyfoodstamps.com/stores?";
 
 class App extends Component {
   state = {
-    latitude: 40.70851,
-    longitude: -73.90896,
-    zoom: 1,
-    searchResults: []
+    currentLocation: null,
+    ebtLocations: []
   };
-
-  talk() {
-    console.log("takling");
-  }
 
   componentDidMount() {
     console.log("App componentDidMount");
   }
+
+  handleSearch = address => {
+    console.log("Handle search called with address: ", address);
+  };
 
   render() {
     console.log("App render");
     return (
       <div className="App">
         <div id="search-container">
-          <SearchForm />
+          <SearchForm onSearch={this.handleSearch} />
         </div>
         <div id="map-container">
           <MapContainer />

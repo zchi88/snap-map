@@ -18,9 +18,14 @@ class MapContainer extends Component {
     zoom: DEFAULT_ZOOM
   };
 
-  // renderMarkers(){
-  //   return {this.props.ebtResourcesPayload.map(entry => )};
-  // }
+  renderEbtStoreMarkers() {
+    return this.props.ebtStores.map(store => (
+      <Marker position={[store["latitude"], store["longitude"]]}>
+        <Popup>{store["store_name"]} </Popup>
+      </Marker>
+    ));
+  }
+
   render() {
     console.log("Map container rendering");
     console.log("Map container props: ", this.props);

@@ -1,23 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
 
 class locationSearch extends Component {
   state = {
     address: ""
   };
-
-  search() {
-    // axios
-    //   .get(
-    //     `https://www.easyfoodstamps.com/stores?latitude=${latitude}&longitude=${longitude}`
-    //   )
-    //   .then(res =>
-    //     this.setState({
-    //       searchResults: res.data
-    //     })
-    //   )
-    //   .catch(err => console.log(err));
-  }
 
   handleChange = event => {
     const { name, value } = event.target;

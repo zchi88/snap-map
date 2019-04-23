@@ -5,6 +5,7 @@ import axios from "axios";
 import "./App.css";
 import MapContainer from "./components/MapContainer";
 import SearchForm from "./components/SearchForm";
+import SearchResults from "./components/SearchResults";
 
 const API = "https://www.easyfoodstamps.com/stores?";
 const DEFAULT_STARTING_LOCATION = {
@@ -95,17 +96,28 @@ class App extends Component {
     );
   };
 
+  handleHoverLocation = location => {
+    console.log("Handling location hover from App:");
+    console.log(location);
+  };
+
   render() {
     console.log("App render");
     return (
       <div className="App">
         <div id="search-container">
           <SearchForm onSearch={this.handleSearch} />
+          <SearchResults
+            ebtOther={this.state.ebtOther}
+            ebtStores={this.state.ebtStores}
+          />
         </div>
         <div id="map-container">
           <MapContainer
             currentLocation={this.state.currentLocation}
-            ebtResourcesPayload={this.state.ebtResourcesPayload}
+            ebtOther={this.state.ebtOther}
+            ebtStores={this.state.ebtStores}
+            onMouseOver={this.handleHoverLocation}
           />
         </div>
       </div>

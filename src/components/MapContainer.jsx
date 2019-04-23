@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
+import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-import "./map.css";
+import "./MapContainer.css";
 
 const DEFAULT_ZOOM = 13;
 
@@ -13,7 +13,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require("leaflet/dist/images/marker-shadow.png")
 });
 
-class Map extends Component {
+class MapContainer extends Component {
   state = {
     lat: 40.70851,
     lng: -73.90896,
@@ -32,7 +32,7 @@ class Map extends Component {
   render() {
     const position = [this.state.lat, this.state.lng];
     return (
-      <LeafletMap id="map" center={position} zoom={this.state.zoom}>
+      <Map id="map" center={position} zoom={this.state.zoom}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -42,9 +42,9 @@ class Map extends Component {
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
         </Marker>
-      </LeafletMap>
+      </Map>
     );
   }
 }
 
-export default Map;
+export default MapContainer;

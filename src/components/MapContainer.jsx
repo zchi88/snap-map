@@ -15,25 +15,20 @@ L.Icon.Default.mergeOptions({
 
 class MapContainer extends Component {
   state = {
-    lat: 40.70851,
-    lng: -73.90896,
     zoom: DEFAULT_ZOOM
   };
 
-  componentDidMount() {
-    console.log("Getting current location");
-    navigator.geolocation.getCurrentPosition(position => {
-      console.log(position);
-      this.setState({ lat: position.coords.latitude });
-      this.setState({ lng: position.coords.longitude });
-    });
-  }
-
+  // renderMarkers(){
+  //   return {this.props.ebtResourcesPayload.map(entry => )};
+  // }
   render() {
     console.log("Map container rendering");
     console.log("Map container props: ", this.props);
 
-    const position = [this.state.lat, this.state.lng];
+    const position = [
+      this.props.currentLocation.latitude,
+      this.props.currentLocation.longitude
+    ];
     return (
       <Map id="map" center={position} zoom={this.state.zoom}>
         <TileLayer
@@ -42,7 +37,9 @@ class MapContainer extends Component {
         />
         <Marker position={position}>
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            {this.props.currentLocation.address
+              ? this.props.currentLocation.address
+              : "You are here"}{" "}
           </Popup>
         </Marker>
       </Map>
